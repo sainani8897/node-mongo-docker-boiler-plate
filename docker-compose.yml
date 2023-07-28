@@ -1,0 +1,12 @@
+version: '3'
+
+# Services
+services:
+
+  mongo:
+    image: mongo
+
+  mynode:
+    build: .
+    ports:
+    - "4040:4040"

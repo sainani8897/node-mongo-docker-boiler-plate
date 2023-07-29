@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 module.exports = {
-  port: 4040,
+  port: process.env.PORT || 4040,
   endpoint: process.env.API_URL,
   masterKey: process.env.API_KEY,
   dbConnection:process.env.DB_CONNECTION,

@@ -5,8 +5,6 @@ const { authenticateToken } = require("../middleware/jwt-token-verification");
 const validationMiddleware = require("../middleware/validation-middleware");
 
 const users = require("./users");
-const myinvestments = require("./myinvestments");
-const investor = require("./investor");
 const customer = require("./customer");
 
 const authController = require("../controllers/auth.contoller");
@@ -18,17 +16,8 @@ const { profile, changePassword } = require("../controllers/user.controller");
 const permissions = require("../controllers/permissions.controller");
 const category = require("./category");
 const tax = require("./tax");
-const product = require("./product");
-const salesOrder = require("./salesOrders");
-const purchaseOrder = require("./purchaseOrder");
-const package = require("./package");
-const shipment = require("./shipment");
 const invoice = require("./invoice");
-const payment = require("./payment");
-const bill = require("./bill");
-const receivables = require("./receivables");
 const dashboard = require("./dashboard");
-const pointOfSale = require("./pointOfSale");
 
 
 /** Home Route */
@@ -61,11 +50,6 @@ Routes.patch(
   changePassword
 );
 
-/** Routes Users  */
-Routes.use("/my-investments", authenticateToken, myinvestments);
-
-/** Investor Routes */
-Routes.use("/investors", authenticateToken, investor);
 
 /** Media Manager */
 Routes.use("/media-manager", authenticateToken, mediaManager);
@@ -90,39 +74,13 @@ Routes.use("/categories", authenticateToken, category);
 /** Tax Routes */
 Routes.use("/taxes", authenticateToken, tax);
 
-/** Tax Routes */
-Routes.use("/products", authenticateToken, product);
-
-/** Sales Order Routes */
-Routes.use("/sales-order", authenticateToken, salesOrder);
-
-/** Purchase Order Routes */
-Routes.use("/purchase-order", authenticateToken, purchaseOrder);
-
-/** Package Routes */
-Routes.use("/packages", authenticateToken, package);
-
-/** Shipment Routes */
-Routes.use("/shipment", authenticateToken, shipment);
-
 /** Invoice Routes  */
 Routes.use("/invoice", authenticateToken, invoice);
-
-/* Payment */
-Routes.use("/payment", authenticateToken, payment);
-
-/* Purchase Order bill */
-Routes.use("/bills", authenticateToken, bill);
-
-/* Receivable Controller */
-Routes.use("/receivables", authenticateToken, receivables);
 
 /* Receivable Controller */
 Routes.use("/dashboard", authenticateToken, dashboard);
 
 /* Point of Sale */
-Routes.use("/pos", authenticateToken, pointOfSale);
-
 
 
 module.exports = Routes;

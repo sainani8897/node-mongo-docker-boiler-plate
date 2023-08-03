@@ -4,8 +4,6 @@ const { Vendor, User } = require("./index");
 const Category = require("./Category");
 const Customer = require("./Customer");
 const Invoice = require("./Invoice");
-const Product = require("./Product");
-const PurchaseOrder = require("./PurchaseOrder");
 const SalesItemsHistory = require("./SalesItemsHistory");
 const SalesOrder = require("./SalesOrder");
 
@@ -43,8 +41,6 @@ const dashboardSchema = new mongoose.Schema(
 
 dashboardSchema.statics.saveOrgData = async function (org_id) {
   const [
-    productsCount,
-    productsOutStockCount,
     categoriesCount,
     salesCount,
     customersCount,
@@ -58,11 +54,7 @@ dashboardSchema.statics.saveOrgData = async function (org_id) {
     recentInvoice,
     recentCustomers,
   ] = await Promise.all([
-    Product.countDocuments({ org_id }).exec(),
-    Product.countDocuments({
-      org_id,
-      status: "Out of Stock",
-    }).exec(),
+   
     Category.countDocuments({ org_id }).exec(),
     SalesOrder.countDocuments({ org_id }).exec(),
     Customer.countDocuments({ org_id }).exec(),

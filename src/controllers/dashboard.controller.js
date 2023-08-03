@@ -3,8 +3,6 @@ const Category = require("../database/Models/Category");
 const Customer = require("../database/Models/Customer");
 const Dashbord = require("../database/Models/Dashboard");
 const Invoice = require("../database/Models/Invoice");
-const Product = require("../database/Models/Product");
-const PurchaseOrder = require("../database/Models/PurchaseOrder");
 const SalesItemsHistory = require("../database/Models/SalesItemsHistory");
 const SalesOrder = require("../database/Models/SalesOrder");
 const { NotFoundException, ValidationException } = require("../exceptions");
@@ -57,11 +55,6 @@ exports.create = async function (req, res, next) {
     const payload = req.body.payload;
     const org_id = req.query.org_id;
     const invoice = await Invoice.findOne({ _id: payload.invoice });
-    const productsCount = await Product.countDocuments({ org_id }).exec();
-    const productsOutStockCount = await Product.countDocuments({
-      org_id,
-      status: "Out of Stock",
-    }).exec();
     const categoriesCount = await Category.countDocuments({ org_id }).exec();
     const salesCount = await SalesOrder.countDocuments({ org_id }).exec();
     const customersCount = await Customer.countDocuments({ org_id }).exec();

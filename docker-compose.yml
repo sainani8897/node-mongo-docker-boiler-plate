@@ -7,6 +7,9 @@ services:
     image: mongo
     ports:
       - "27018:27017"
+  
+  redis:
+    image: redis
 
   mynode:
     build: .

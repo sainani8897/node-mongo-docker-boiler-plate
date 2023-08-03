@@ -1,7 +1,6 @@
-# Node MongoDB (Mongoose ORM) bioler plate code (MVC Pattern)
+# Node MongoDB (Mongoose ORM) bioler plate code (MVC Pattern)-- Using Docker
 
-CMS stands for __Control Management System__.
-This entire Application is built on __Node.js express Framework__ and uses mongoose as ORM.
+This entire Application is containerized with node.js, mongo and redis images
 
 ## Features
 
@@ -11,10 +10,11 @@ This entire Application is built on __Node.js express Framework__ and uses mongo
 * Using Model View Contro - MVC (Design pattern)
 * database seeding
 
-## Prerequisitesjs 
+## Prerequisites
   
 -  [x] Docker 🐋
--  [x] Node.js v14 
+-  [x] Node.js v14
+-  [ ] redis
 
 
 ## How run the application
